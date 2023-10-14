@@ -16,7 +16,7 @@ def caraOuCoroa():
         result = 'Coroa'
         mensagem_var.set("Coroa")
     
-    # Atualizar a imagem apenas quando necessário
+    # atualiza a imagem
     if result == 'Coroa':
         imagem_label.configure(image=coroa)
         imagem_label.image = coroa
@@ -24,29 +24,29 @@ def caraOuCoroa():
         imagem_label.configure(image=cara)
         imagem_label.image = cara
 
-root = tk.Tk()
+janela = tk.Tk()
 
-root.minsize(200, 160)
+janela.minsize(200, 160)
 
-# Criar um botão
-botao = tk.Button(root, text="RODAR", command=caraOuCoroa)
+# cria um botao
+botao = tk.Button(janela, text="RODAR", command=caraOuCoroa)
 botao.pack()
 
 mensagem_var = tk.StringVar()
 
-# Rótulo para exibir a mensagem
-rotulo_mensagem = tk.Label(root, textvariable=mensagem_var)
-rotulo_mensagem.pack()
+# exibe uma mensagem de resultado
+resultado = tk.Label(janela, textvariable=mensagem_var)
+resultado.pack()
 
-# Carregar uma imagem padrão ou vazia
-imagem_vazia = PhotoImage()  # imagem vazia
-imagem_label = tk.Label(root, image=imagem_vazia)
+# carrega uma imagem padrao
+imagem_vazia = PhotoImage()  
+imagem_label = tk.Label(janela, image=imagem_vazia)
 imagem_label.image = imagem_vazia
 imagem_label.pack()
 
-# Carregar a imagem
-coroa = PhotoImage(file=pasta + "\\coroa.png")
-cara = PhotoImage(file=pasta + "\\cara.png")
+# local da imagem
+coroa = PhotoImage(file=os.path.join(pasta, "coroa.png"))
+cara = PhotoImage(file=os.path.join(pasta, "cara.png"))
 
-# Iniciar o loop principal
-root.mainloop()
+# loop
+janela.mainloop()
